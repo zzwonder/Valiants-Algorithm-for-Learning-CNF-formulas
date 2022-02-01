@@ -28,7 +28,8 @@ class learnByValiant:
             clauseCount += 1
             if self.checkClause(clause,X,positiveIndex) == True:
                 self.model.append(clause)
-            #print("learning process (# clauses checked): "+repr(clauseCount)+" / "+repr(numPossibleClauses)+" ("+repr(clauseCount * 100.0 / numPossibleClauses)+"%)")
+            if clauseCount % 100 == 0:
+                print("learning process (# clauses checked): "+repr(clauseCount)+" / "+repr(numPossibleClauses)+" ("+repr(clauseCount * 100.0 / numPossibleClauses)+"%)")
         print('learned a ' +repr(self.k) + '-CNF formula by Valiants algorithm with '+repr(len(self.model))+' clauses.')
         print('ratio of positive assignments: ' + repr(len(positiveIndex)) + ' / ' + repr(len(X)))
         return self.model
